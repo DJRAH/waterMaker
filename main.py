@@ -1,6 +1,6 @@
 from tkinter import *
-from tkinter import ttk
-
+from tkinter import ttk, filedialog
+from PIL import ImageTk, Image
 
 root = Tk()
 
@@ -16,11 +16,18 @@ root.resizable(False,False)
 
 
 frm = ttk.Frame(root)
-frm.grid()
+frm.pack(expand=1)
 
+def add_img_pc():
+    print("add img from pc clicked")
+    im = Image.open(filedialog.askopenfilename())
+    im = im.resize((h,h))
+    img = ImageTk.PhotoImage(im)
+    panel = Label(frm, image=img)
+    panel.image = img
+    panel.pack()
 
-
-ttk.Button(frm, text="Quit", command=root.destroy).grid(padx=(w/2)-50, pady=(h/2)-50)
+btn = ttk.Button(frm, text="Add Img from PC", command=add_img_pc).pack() #grid(padx=(w/2)-50, pady=(h/2)-50)
 
 
 
