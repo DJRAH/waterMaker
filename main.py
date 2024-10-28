@@ -18,16 +18,31 @@ root.resizable(False,False)
 frm = ttk.Frame(root)
 frm.pack(expand=1)
 
-def add_img_pc():
-    print("add img from pc clicked")
+def uploadImg(h):
     im = Image.open(filedialog.askopenfilename())
     im = im.resize((h,h))
-    img = ImageTk.PhotoImage(im)
+    img = ImageTk.PhotoImage(im) 
+    return img
+
+def add_logo_pc():
+
+    img =uploadImg(int(h/8))
+    print(int(h/8))
+    panel1 = Label(frm, image=img)
+    panel1.image = img
+    panel1.pack()
+
+def add_img_pc():
+    
+    img = uploadImg(int(h/2))
+
     panel = Label(frm, image=img)
     panel.image = img
+    btn_logo = ttk.Button(frm, text="Add Logo from PC", command=add_logo_pc).pack() 
     panel.pack()
 
-btn = ttk.Button(frm, text="Add Img from PC", command=add_img_pc).pack() #grid(padx=(w/2)-50, pady=(h/2)-50)
+
+btn_img = ttk.Button(frm, text="Add Img from PC", command=add_img_pc).pack() #grid(padx=(w/2)-50, pady=(h/2)-50)
 
 
 
