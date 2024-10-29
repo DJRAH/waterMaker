@@ -1,2 +1,2 @@
 # waterMaker
-GIU to add logo to image locally
+GUi to add logo to image locally
